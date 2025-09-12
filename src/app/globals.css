@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,6 +18,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  /* padding-top: -10px; /* same as navbar height */
 }
 
 body {
@@ -38,5 +43,110 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+
+/* NAVBAR */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+/* Desktop Links */
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.links a:hover {
+  color: #ccc;
+}
+
+/* Mobile Button */
+.mobileBtn {
+  position: absolute;   /* take it out of normal flow */
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+  z-index: 1001; /* keep it above the menu */
+}
+
+/* Mobile Dropdown */
+.mobileMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh; /* full screen */
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  gap: 2rem;
+  z-index: 999;
+}
+
+.mobileMenu a {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.mobileMenu a:hover {
+  color: #ccc;
+}
+
+/* Close Button */
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .mobileBtn {
+    display: block;
   }
 }

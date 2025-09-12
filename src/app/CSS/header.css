@@ -1,0 +1,75 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 110vh;
+  overflow: hidden;
+  margin-top: 60px; /* adjust to your navbar height */
+}
+
+/* Each slide */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fade 15s infinite;
+}
+
+/* Slides with different images */
+.slide1 {
+  background-image: url("/images/greg.jpg");
+  animation-delay: 0s;
+}
+
+.slide2 {
+  background-image: url("/images/owen.jpg");
+  animation-delay: 5s;
+}
+
+.slide3 {
+  background-image: url("/images/grace.jpg");
+  animation-delay: 10s;
+}
+
+/* Overlay text */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+  width: 90%;
+}
+
+.overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+}
+
+/* Fade animation */
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+}

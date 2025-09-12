@@ -1,9 +1,14 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Navbar from "./Components/navbar";
+import Header from "./Components/header";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <>
+    <Navbar></Navbar>
+    <Header></Header>
+    {/* <div className={styles.page}>
       <main className={styles.main}>
         <Image
           className={styles.logo}
@@ -15,7 +20,7 @@ export default function Home() {
         />
         <ol>
           <li>
-            Get started by editing <code>src/app/page.tsx</code>.
+            Start by editing <code>src/app/page.tsx</code>.
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
@@ -90,6 +95,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
-    </div>
+    </div> */}
+    </>
   );
 }
