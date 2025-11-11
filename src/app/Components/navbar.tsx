@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import Link from "next/link"
-// import styles from "../CSS/styles.css" // import CSS
+import Image from "next/image"
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -10,14 +10,21 @@ export default function Navbar() {
     <nav className="navbar">
       {/* Logo */}
       <Link href="/" className="logo">
-        Drewity Photos
+        <Image 
+          src="/images/drewity-logo.png" 
+          alt="Drewity Photos" 
+          width={120} 
+          height={50}
+          priority
+          style={{ objectFit: 'contain' }}
+        />
       </Link>
 
       {/* Desktop Menu */}
       <div className="links">
         <Link href="/">Home</Link>
-        <Link href="/work">My Work</Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/work">Work</Link>
+        <Link href="/#contact">Contact</Link>
       </div>
 
       {/* Mobile Hamburger */}
@@ -29,8 +36,8 @@ export default function Navbar() {
       {open && (
         <div className="mobileMenu">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
-          <Link href="/work" onClick={() => setOpen(false)}>My Work</Link>
-          <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
+          <Link href="/work" onClick={() => setOpen(false)}>Work</Link>
+          <Link href="/#contact" onClick={() => setOpen(false)}>Contact</Link>
         </div>
       )}
     </nav>

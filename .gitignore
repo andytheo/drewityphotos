@@ -38,6 +38,10 @@ yarn-error.log*
 .env*.local
 .env
 
+# C# backend (not used - using Next.js API routes instead)
+/server
+*.sln
+
 # vercel
 .vercel
 

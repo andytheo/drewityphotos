@@ -1,23 +1,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Navbar from "./Components/navbar";
 import Header from "./Components/header";
 import AboutMe from "./Components/about";
 import Testimonials from "./Components/testimonials";
-import Divider from "./Components/divider";
-import Footer from "./Components/footer";
 import Portfolio from "./Components/portfolio";
+import Contact from "./Components/contact";
 
 export default function Home() {
   return (
     <>
-    <Navbar></Navbar>
     <Header></Header>
     <AboutMe></AboutMe>
     <Portfolio />
-    <Divider />
     <Testimonials />
-    <Footer />
+    <Contact />
     {/* <div className={styles.page}>
       <main className={styles.main}>
         <Image
