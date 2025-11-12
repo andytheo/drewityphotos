@@ -8,7 +8,7 @@ import Image from "next/image";
 const photos = [
   { src: "/images/andrew3.jpg", category: "Portraits", alt: "Portrait 1" },
   { src: "/images/greg3.jpg", category: "Portraits", alt: "Portrait 2" },
-  { src: "/images/oluikpe1.jpg", category: "Events", alt: "Event 1" },
+  { src: "/images/grace.jpg", category: "Events", alt: "Event 1" },
   { src: "/images/uti.jpg", category: "Events", alt: "Event 2" },
   // Add more as needed
 ];

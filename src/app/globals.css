@@ -231,6 +231,8 @@ a {
   position: relative;
   z-index: 2;
   margin-right: -40px;
+  transform: translateY(0);
+  transition: transform .3s ease;
 }
 
 /* Second photo */
@@ -239,6 +241,39 @@ a {
   z-index: 1;
   top: 40px;
   left: 0px;
+  transition: top .3s ease, transform .3s ease;
+}
+
+/* Medium screens: reduce overlap */
+@media (max-width: 900px) {
+  .about-photos img:first-child {
+    margin-right: -25px;
+  }
+  .about-photos img:last-child {
+    top: 30px;
+  }
+}
+
+/* Small screens: stack vertically with subtle offset */
+@media (max-width: 640px) {
+  .about-photos {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .about-photos img:first-child {
+    margin-right: 0;
+    transform: translateY(0);
+  }
+  .about-photos img:last-child {
+    top: 0;
+    left: 0;
+  }
+}
+
+/* Extra small: shrink width gracefully */
+@media (max-width: 420px) {
+  .about-photos img { max-width: 200px; }
 }
 
 .about-text {

@@ -28,11 +28,7 @@ export const PHOTOS: Photo[] = [
   // Portraits: restrict to portrait*.jpg
   { id: 'portraits-1', genre: 'portraits', src: '/images/portrait1.jpg', thumb: '/images/portrait1.jpg' },
   { id: 'portraits-2', genre: 'portraits', src: '/images/portrait2.jpg', thumb: '/images/portrait2.jpg' },
-  { id: 'portraits-3', genre: 'portraits', src: '/images/portrait3.jpg', thumb: '/images/portrait3.jpg' },
-  { id: 'portraits-4', genre: 'portraits', src: '/images/portrait5.jpg', thumb: '/images/portrait5.jpg' },
   // Events
-  { id: 'events-1', genre: 'events', src: '/images/oluikpe1.jpg', thumb: '/images/oluikpe1.jpg' },
-  { id: 'events-2', genre: 'events', src: '/images/oluikpe2.jpg', thumb: '/images/oluikpe2.jpg' },
   { id: 'events-3', genre: 'events', src: '/images/uti.jpg', thumb: '/images/uti.jpg' },
   { id: 'events-4', genre: 'events', src: '/images/event2.jpg', thumb: '/images/event2.jpg' },
   { id: 'events-5', genre: 'events', src: '/images/event3.jpg', thumb: '/images/event3.jpg' },

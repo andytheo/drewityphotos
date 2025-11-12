@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Force Node.js runtime (Nodemailer not supported on the Edge runtime)
+export const runtime = 'nodejs';
+
 interface ContactPayload {
   name: string;
   email: string;
@@ -8,9 +11,27 @@ interface ContactPayload {
   message: string;
 }
 
+function assertEnv() {
+  const required = [
+    'EMAIL_SMTP_SERVER',
+    'EMAIL_PORT',
+    'EMAIL_USERNAME',
+    'EMAIL_PASSWORD',
+    'EMAIL_FROM',
+    'EMAIL_TO'
+  ];
+  const missing = required.filter(k => !process.env[k]);
+  if (missing.length) {
+    throw new Error(`Missing required email environment variables: ${missing.join(', ')}`);
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const { name, email, subject, message } = await request.json() as ContactPayload;
+
+    // Validate env vars early (helps diagnose Vercel deployment issues)
+    assertEnv();
 
     // Validation
     if (!name || !email || !message) {
@@ -42,9 +63,14 @@ export async function POST(request: Request) {
       },
     });
 
-    // Verify connection
-    await transporter.verify();
-    console.log('SMTP connection verified successfully');
+    // Optional: verify connection (can fail on some providers / serverless cold starts)
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (vErr) {
+      // Non-fatal; log and continue
+      console.warn('SMTP verify failed (continuing):', vErr instanceof Error ? vErr.message : vErr);
+    }
 
     // Email content
     const mailOptions = {
