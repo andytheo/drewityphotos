@@ -19,7 +19,7 @@ const Contact = () => {
 
   const update = (k: keyof FormState, v: string) => setForm(prev => ({ ...prev, [k]: v }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
@@ -43,10 +43,11 @@ const Contact = () => {
         throw new Error(body?.error || 'Failed to send message');
       }
 
-      setSuccess('✓ Message sent — thank you! We\'ll be in touch soon.');
+      setSuccess('✓ Message sent — thank you! We&apos;ll be in touch soon.');
       setForm(initialState);
-    } catch (err: any) {
-      setError(err?.message || 'Failed to send message');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to send message';
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -57,7 +58,7 @@ const Contact = () => {
       <div className="contact-container">
         <div className="contact-inner">
           <h2>Get In Touch</h2>
-          <p>We'd love to hear about your photography needs. Send us a message and we'll respond as soon as possible.</p>
+          <p>We&apos;d love to hear about your photography needs. Send us a message and we&apos;ll respond as soon as possible.</p>
           <div style={{ marginTop: '1.5rem' }}>
             <p style={{ fontSize: '1rem', marginBottom: '0.75rem', fontWeight: '500' }}>Find me on Instagram</p>
             <a 

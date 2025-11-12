@@ -1,9 +1,16 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+interface ContactPayload {
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+}
+
 export async function POST(request: Request) {
   try {
-    const { name, email, subject, message } = await request.json();
+    const { name, email, subject, message } = await request.json() as ContactPayload;
 
     // Validation
     if (!name || !email || !message) {
@@ -63,10 +70,17 @@ export async function POST(request: Request) {
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error('Email send error:', error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Email send error:', error);
+      return NextResponse.json(
+        { error: 'Failed to send email', detail: error.message },
+        { status: 500 }
+      );
+    }
+    console.error('Unknown email send error:', error);
     return NextResponse.json(
-      { error: 'Failed to send email', detail: error.message },
+      { error: 'Failed to send email' },
       { status: 500 }
     );
   }
