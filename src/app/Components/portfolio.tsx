@@ -3,6 +3,7 @@
 
 // src/components/Portfolio.js
 import React, { useState } from "react";
+import Image from "next/image";
 
 const photos = [
   { src: "/images/andrew3.jpg", category: "Portraits", alt: "Portrait 1" },
@@ -44,10 +45,13 @@ export default function Portfolio() {
       <div className="portfolio-grid">
         {filteredPhotos.map((photo) => (
           <div key={photo.src} className="portfolio-item">
-            <img
+            <Image
               src={photo.src}
               alt={photo.alt}
+              width={250}
+              height={333}
               onClick={() => setModalPhoto(photo.src)}
+              style={{ cursor: 'pointer', objectFit: 'cover' }}
             />
           </div>
         ))}
@@ -56,7 +60,7 @@ export default function Portfolio() {
       {/* Modal */}
       {modalPhoto && (
         <div className="modal" onClick={() => setModalPhoto(null)}>
-          <img src={modalPhoto} alt="Enlarged view" />
+          <Image src={modalPhoto} alt="Enlarged view" width={800} height={1066} style={{ objectFit: 'contain' }} />
         </div>
       )}
     </section>

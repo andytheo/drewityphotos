@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getPhotosByGenre, getGenre } from "../genres";
@@ -46,7 +47,7 @@ export default function GenrePage() {
             className={styles.thumbnail}
             onClick={() => handlePhotoClick(photo.src)}
           >
-            <img src={photo.thumb} alt={photo.genre} />
+            <Image src={photo.thumb} alt={photo.genre} width={400} height={300} />
           </figure>
         ))}
       </div>

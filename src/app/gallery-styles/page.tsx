@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import { GENRES, PHOTOS } from "./genres";
 import Lightbox from "./lightbox";
+import Image from "next/image";
 
 export default function GalleryPage() {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
@@ -45,7 +46,7 @@ export default function GalleryPage() {
                     className={styles.thumbnail}
                     onClick={() => handlePhotoClick(photo)}
                   >
-                    <img src={photo.thumb} alt={photo.genre} />
+                    <Image src={photo.thumb} alt={photo.genre} width={400} height={300} />
                   </figure>
                 ))}
               </div>

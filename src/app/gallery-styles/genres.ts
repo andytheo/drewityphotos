@@ -12,11 +12,6 @@ export const GENRES = [
     description: "Professional and candid portrait photography",
   },
   {
-    name: "Landscapes",
-    slug: "landscapes",
-    description: "Nature and landscape photography",
-  },
-  {
     name: "Events",
     slug: "events",
     description: "Weddings, parties, and special occasions",
@@ -29,19 +24,26 @@ export const GENRES = [
 ];
 
 // Generate sample photos grouped by genre
-export const PHOTOS: Photo[] = [];
-
-GENRES.forEach((genre) => {
-  for (let i = 1; i <= 6; i++) {
-    PHOTOS.push({
-      id: `${genre.slug}-${i}`,
-      genre: genre.slug,
-      // Use stable seed for Lorem Picsum based on genre and index
-      src: `https://picsum.photos/seed/drew-${genre.slug}-${i}/1200/900`,
-      thumb: `https://picsum.photos/seed/drew-${genre.slug}-${i}/400/300`,
-    });
-  }
-});
+export const PHOTOS: Photo[] = [
+  // Portraits: restrict to portrait*.jpg
+  { id: 'portraits-1', genre: 'portraits', src: '/images/portrait1.jpg', thumb: '/images/portrait1.jpg' },
+  { id: 'portraits-2', genre: 'portraits', src: '/images/portrait2.jpg', thumb: '/images/portrait2.jpg' },
+  { id: 'portraits-3', genre: 'portraits', src: '/images/portrait3.jpg', thumb: '/images/portrait3.jpg' },
+  { id: 'portraits-4', genre: 'portraits', src: '/images/portrait5.jpg', thumb: '/images/portrait5.jpg' },
+  // Events
+  { id: 'events-1', genre: 'events', src: '/images/oluikpe1.jpg', thumb: '/images/oluikpe1.jpg' },
+  { id: 'events-2', genre: 'events', src: '/images/oluikpe2.jpg', thumb: '/images/oluikpe2.jpg' },
+  { id: 'events-3', genre: 'events', src: '/images/uti.jpg', thumb: '/images/uti.jpg' },
+  { id: 'events-4', genre: 'events', src: '/images/event2.jpg', thumb: '/images/event2.jpg' },
+  { id: 'events-5', genre: 'events', src: '/images/event3.jpg', thumb: '/images/event3.jpg' },
+  // Street: restrict to street*.jpg
+  { id: 'street-1', genre: 'street', src: '/images/street.jpg', thumb: '/images/street.jpg' },
+  { id: 'street-2', genre: 'street', src: '/images/street1.jpg', thumb: '/images/street1.jpg' },
+  { id: 'street-3', genre: 'street', src: '/images/street3.jpg', thumb: '/images/street3.jpg' },
+  { id: 'street-4', genre: 'street', src: '/images/street4.jpg', thumb: '/images/street4.jpg' },
+  { id: 'street-5', genre: 'street', src: '/images/street5.jpg', thumb: '/images/street5.jpg' },
+  { id: 'street-6', genre: 'street', src: '/images/street6.jpg', thumb: '/images/street6.jpg' },
+];
 
 export const getPhotosByGenre = (genreSlug: string): Photo[] => {
   return PHOTOS.filter((photo) => photo.genre === genreSlug);

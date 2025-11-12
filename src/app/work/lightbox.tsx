@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Image from "next/image";
 import styles from "./lightbox.module.css";
 
 interface LightboxProps {
@@ -39,7 +40,9 @@ export default function Lightbox({ isOpen, imageSrc, imageAlt, onClose }: Lightb
         <button className={styles.closeBtn} onClick={onClose} aria-label="Close lightbox">
           ✕
         </button>
-        <img src={imageSrc} alt={imageAlt} className={styles.image} />
+        <div style={{ position: 'relative', width: '90vw', height: '85vh' }}>
+          <Image src={imageSrc} alt={imageAlt} fill sizes="100vw" style={{ objectFit: 'contain' }} />
+        </div>
       </div>
     </div>
   );
