@@ -7,8 +7,20 @@ export default function AboutMe() {
       <div className="about-container">
         {/* Photos */}
         <div className="about-photos">
-          <Image src="/images/andrew2.jpg" alt="Behind the camera" width={250} height={333} />
-          <Image src="/images/andrew1.jpg" alt="Capturing a moment" width={250} height={333} />
+          <Image
+            src="/images/andrew2.jpg"
+            alt="Behind the camera"
+            width={250}
+            height={333}
+            sizes="(max-width: 640px) 72vw, (max-width: 900px) 42vw, 250px"
+          />
+          <Image
+            src="/images/andrew1.jpg"
+            alt="Capturing a moment"
+            width={250}
+            height={333}
+            sizes="(max-width: 640px) 72vw, (max-width: 900px) 42vw, 250px"
+          />
         </div>
 
         {/* Text */}

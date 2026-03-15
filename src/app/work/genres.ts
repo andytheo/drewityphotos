@@ -12,14 +12,14 @@ export const GENRES = [
     description: "Professional and candid portrait photography",
   },
   {
+    name: "Headshots",
+    slug: "headshots",
+    description: "Headshot photography",
+  },
+  {
     name: "Events",
     slug: "events",
     description: "Weddings, parties, and special occasions",
-  },
-  {
-    name: "Street",
-    slug: "street",
-    description: "Urban and street photography",
   },
 ];
 
@@ -28,21 +28,30 @@ export const GENRES = [
 // Portraits
 export const PHOTOS: Photo[] = [
   // Portraits: use only files named portrait*.jpg
-  { id: 'portraits-1', genre: 'portraits', src: '/images/portrait1.jpg', thumb: '/images/portrait1.jpg' },
-  { id: 'portraits-2', genre: 'portraits', src: '/images/portrait2.jpg', thumb: '/images/portrait2.jpg' },
+  { id: 'portraits-1', genre: 'portraits', src: '/images/Portraits/1.jpg', thumb: '/images/Portraits/1.jpg' },
+  { id: 'portraits-2', genre: 'portraits', src: '/images/Portraits/2.jpg', thumb: '/images/Portraits/2.jpg' },
+  { id: 'portraits-3', genre: 'portraits', src: '/images/Portraits/3.jpg', thumb: '/images/Portraits/3.jpg' },
+  { id: 'portraits-4', genre: 'portraits', src: '/images/Portraits/4.jpg', thumb: '/images/Portraits/4.jpg' },
+  { id: 'portraits-5', genre: 'portraits', src: '/images/Portraits/5.jpg', thumb: '/images/Portraits/5.jpg' },
+  { id: 'portraits-6', genre: 'portraits', src: '/images/Portraits/6.jpg', thumb: '/images/Portraits/6.jpg' },
+  { id: 'portraits-7', genre: 'portraits', src: '/images/Portraits/7.jpg', thumb: '/images/Portraits/7.jpg' },
+  { id: 'portraits-8', genre: 'portraits', src: '/images/Portraits/DSC_2464.jpg', thumb: '/images/Portraits/DSC_2464.jpg' },
   
   // Events
-  { id: 'events-3', genre: 'events', src: '/images/owen.jpg', thumb: '/images/owen.jpg' },
-  { id: 'events-4', genre: 'events', src: '/images/event2.jpg', thumb: '/images/event2.jpg' },
-  { id: 'events-5', genre: 'events', src: '/images/event3.jpg', thumb: '/images/event3.jpg' },
-  // Street: use only files named street*.jpg
-  { id: 'street-1', genre: 'street', src: '/images/street.jpg', thumb: '/images/street.jpg' },
-  { id: 'street-2', genre: 'street', src: '/images/street1.jpg', thumb: '/images/street1.jpg' },
-  { id: 'street-3', genre: 'street', src: '/images/street3.jpg', thumb: '/images/street3.jpg' },
-  { id: 'street-4', genre: 'street', src: '/images/street4.jpg', thumb: '/images/street4.jpg' },
-  { id: 'street-5', genre: 'street', src: '/images/street5.jpg', thumb: '/images/street5.jpg' },
-  { id: 'street-6', genre: 'street', src: '/images/street6.jpg', thumb: '/images/street6.jpg' },
-];
+  { id: 'events-1', genre: 'events', src: '/images/Events/1.jpg', thumb: '/images/Events/1.jpg' },
+  { id: 'events-2', genre: 'events', src: '/images/Events/2.jpg', thumb: '/images/Events/2.jpg' },
+  { id: 'events-3', genre: 'events', src: '/images/Events/3.jpg', thumb: '/images/Events/3.jpg' },
+  { id: 'events-4', genre: 'events', src: '/images/Events/4.jpg', thumb: '/images/Events/4.jpg' },
+  { id: 'events-5', genre: 'events', src: '/images/Events/5.jpg', thumb: '/images/Events/5.jpg' },
+  { id: 'events-6', genre: 'events', src: '/images/Events/6.jpg', thumb: '/images/Events/6.jpg' },
+  { id: 'events-7', genre: 'events', src: '/images/Events/7.jpg', thumb: '/images/Events/7.jpg' },
+  { id: 'events-8', genre: 'events', src: '/images/Events/8.jpg', thumb: '/images/Events/8.jpg' },
+
+  // Headshots: use only files named headshot*.jpg
+  { id: 'headshots-1', genre: 'headshots', src: '/images/Headshots/1.jpg', thumb: '/images/Headshots/1.jpg' },
+  { id: 'headshots-2', genre: 'headshots', src: '/images/Headshots/2.jpg', thumb: '/images/Headshots/2.jpg' },
+  { id: 'headshots-3', genre: 'headshots', src: '/images/Headshots/3.jpg', thumb: '/images/Headshots/3.jpg' },
+  ];
 
 export const getPhotosByGenre = (genreSlug: string): Photo[] => {
   return PHOTOS.filter((photo) => photo.genre === genreSlug);

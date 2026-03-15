@@ -38,6 +38,19 @@ yarn-error.log*
 .env*.local
 .env
 
+# secrets and keys
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
 # C# backend (not used - using Next.js API routes instead)
 /server
 *.sln

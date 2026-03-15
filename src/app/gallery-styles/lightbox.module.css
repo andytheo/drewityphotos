@@ -26,9 +26,9 @@
 }
 
 .closeBtn {
-  position: absolute;
-  top: -2rem;
-  right: 0;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
   color: white;
@@ -36,6 +36,7 @@
   cursor: pointer;
   padding: 0.5rem;
   line-height: 1;
+  z-index: 1001;
 }
 
 .closeBtn:hover {

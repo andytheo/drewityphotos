@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$STAGED_FILES" ]; then
+	exit 0
+fi
+
+echo "Running secret scan on staged files..."
+npx secretlint $STAGED_FILES

@@ -42,6 +42,11 @@ a {
   text-decoration: none;
 }
 
+/* Hide Next.js dev indicator badge in local development */
+nextjs-portal {
+  display: none !important;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -196,7 +201,7 @@ a {
 
 /* ABOUT ME */
 .about-section {
-  padding: 80px 20px;
+  padding: clamp(56px, 8vw, 80px) 20px;
   background: #f8fafc;
 }
 
@@ -204,22 +209,24 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1100px;
+  width: min(100%, 1100px);
   margin: 0 auto;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: clamp(24px, 5vw, 40px);
+  flex-wrap: nowrap;
 }
 
 .about-photos {
   position: relative;
   display: flex;
-  flex: 1;
+  flex: 0 1 520px;
+  min-width: 0;
   justify-content: center;
 }
 
 .about-photos img {
-  width: 100%;
-  max-width: 250px;
+  width: clamp(180px, 28vw, 250px);
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 8px 24px rgba(30, 41, 59, 0.12);
@@ -246,11 +253,21 @@ a {
 
 /* Medium screens: reduce overlap */
 @media (max-width: 900px) {
+  .about-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .about-photos {
+    flex: 1 1 100%;
+  }
   .about-photos img:first-child {
     margin-right: -25px;
   }
   .about-photos img:last-child {
     top: 30px;
+  }
+  .about-text {
+    flex: 1 1 100%;
   }
 }
 
@@ -260,6 +277,9 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 1.25rem;
+  }
+  .about-photos img {
+    width: min(72vw, 260px);
   }
   .about-photos img:first-child {
     margin-right: 0;
@@ -273,12 +293,20 @@ a {
 
 /* Extra small: shrink width gracefully */
 @media (max-width: 420px) {
-  .about-photos img { max-width: 200px; }
+  .about-text {
+    min-width: 0;
+  }
+  .about-text h2 {
+    font-size: 1.7rem;
+  }
+  .about-text p {
+    font-size: 1rem;
+  }
 }
 
 .about-text {
-  flex: 1;
-  min-width: 280px;
+  flex: 1 1 320px;
+  min-width: min(100%, 280px);
   color: #1e293b;
 }
 
@@ -408,6 +436,11 @@ a {
 
 .footer-links a:hover {
   color: #0070f3;
+}
+
+.footer-section img[src*="next" i],
+.footer-section img[alt*="next" i] {
+  display: none;
 }
 
 /* Reuse the HR style you already created */

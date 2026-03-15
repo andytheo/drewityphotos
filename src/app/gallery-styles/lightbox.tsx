@@ -36,13 +36,36 @@ export default function Lightbox({ isOpen, imageSrc, imageAlt, onClose }: Lightb
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close lightbox">
+      <div className={styles.modal}>
+        <button
+          className={styles.closeBtn}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
+          aria-label="Close lightbox"
+        >
           ✕
         </button>
-        <div className={styles.image} style={{ position: 'relative' }}>
-          <Image src={imageSrc} alt={imageAlt} fill style={{ objectFit: 'contain' }} />
-        </div>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          width={1600}
+          height={1200}
+          sizes="(max-width: 768px) 100vw, 90vw"
+          quality={70}
+          priority
+          loading="eager"
+          fetchPriority="high"
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            width: "auto",
+            height: "auto",
+            maxWidth: "90vw",
+            maxHeight: "85vh",
+            objectFit: "contain",
+          }}
+        />
       </div>
     </div>
   );

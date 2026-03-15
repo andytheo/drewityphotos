@@ -24,6 +24,7 @@ export default function Navbar() {
       <div className="links">
         <Link href="/">Home</Link>
         <Link href="/work">Work</Link>
+        <Link href="/pricing">Pricing</Link>
         <Link href="/#contact">Contact</Link>
       </div>
 
@@ -37,6 +38,7 @@ export default function Navbar() {
         <div className="mobileMenu">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
           <Link href="/work" onClick={() => setOpen(false)}>Work</Link>
+          <Link href="/pricing" onClick={() => setOpen(false)}>Pricing</Link>
           <Link href="/#contact" onClick={() => setOpen(false)}>Contact</Link>
         </div>
       )}
