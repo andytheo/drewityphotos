@@ -27,15 +27,6 @@ export default function GenrePage() {
   const [selectedImageSrc, setSelectedImageSrc] = useState<string>("");
   const preloaded = React.useRef(new Set<string>());
 
-  if (!genre) {
-    return (
-      <main className={styles.container}>
-        <h1>Genre not found</h1>
-        <Link href="/work">← Back to gallery</Link>
-      </main>
-    );
-  }
-
   const handlePhotoClick = (photoSrc: string) => {
     setSelectedImageSrc(photoSrc);
     setSelectedPhoto(photoSrc);
@@ -47,6 +38,15 @@ export default function GenrePage() {
     img.src = photoSrc;
     preloaded.current.add(photoSrc);
   }, []);
+
+  if (!genre) {
+    return (
+      <main className={styles.container}>
+        <h1>Genre not found</h1>
+        <Link href="/work">← Back to gallery</Link>
+      </main>
+    );
+  }
 
   return (
     <main className={styles.container}>
