@@ -1,25 +1,62 @@
-import React from "react";
-import "../CSS/header.css"; // import styles
+import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="slide slide1">
-        <div className="overlay">
-          <h1>Capturing Life’s Moments</h1>
-          <p>Photography that tells your story</p>
+    <header className="hero-section">
+      <div className="hero-copy">
+        <p className="hero-kicker">Drewity Photography</p>
+        <h1>Images that feel polished, relaxed, and real.</h1>
+        <p className="hero-lead">
+          Photography that feels natural, soft, with true-to-life
+          colour instead of stiff poses and generic edits.
+        </p>
+        <div className="hero-actions">
+          <Link href="/work" className="hero-primary">
+            View the work
+          </Link>
+          <Link href="/#contact" className="hero-secondary">
+            Start your session
+          </Link>
+        </div>
+        <div className="hero-highlights" aria-label="Session highlights">
+          <span>Portraits</span>
+          <span>Headshots</span>
+          <span>Events</span>
+          <span>Natural colour</span>
         </div>
       </div>
-      <div className="slide slide2">
-        <div className="overlay">
-          <h1>Memories That Last</h1>
-          <p>From birthdays to weddings</p>
+      <div className="hero-visual" aria-hidden="true">
+        <div className="hero-frame hero-frame-large">
+          <Image
+            src="/images/Portraits/2.jpg"
+            alt="Portrait session highlight"
+            fill
+            quality={95}
+            sizes="(max-width: 900px) 90vw, 32vw"
+            style={{ objectPosition: "center 14%" }}
+            priority
+          />
         </div>
-      </div>
-      <div className="slide slide3">
-        <div className="overlay">
-          <h1>Your Vision, My Lens</h1>
-          <p>Professional and personal photography</p>
+        <div className="hero-frame hero-frame-top">
+          <Image
+            src="/images/Headshots/1.jpg"
+            alt="Headshot session highlight"
+            fill
+            quality={95}
+            sizes="(max-width: 900px) 44vw, 18vw"
+            style={{ objectPosition: "center 14%" }}
+          />
+        </div>
+        <div className="hero-frame hero-frame-bottom">
+          <Image
+            src="/images/Events/6.jpg"
+            alt="Event photography highlight"
+            fill
+            quality={95}
+            sizes="(max-width: 900px) 44vw, 18vw"
+            style={{ objectPosition: "center 18%" }}
+          />
         </div>
       </div>
     </header>

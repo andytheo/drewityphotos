@@ -8,7 +8,6 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      {/* Logo */}
       <Link href="/" className="logo">
         <Image 
           src="/images/drewity-logo.png" 
@@ -20,7 +19,6 @@ export default function Navbar() {
         />
       </Link>
 
-      {/* Desktop Menu */}
       <div className="links">
         <Link href="/">Home</Link>
         <Link href="/work">Work</Link>
@@ -28,12 +26,10 @@ export default function Navbar() {
         <Link href="/#contact">Contact</Link>
       </div>
 
-      {/* Mobile Hamburger */}
-      <button className="mobileBtn" onClick={() => setOpen(!open)}>
+      <button className="mobileBtn" onClick={() => setOpen(!open)} aria-label="Toggle navigation menu">
         {open ? "✖" : "☰"}
       </button>
 
-      {/* Mobile Dropdown */}
       {open && (
         <div className="mobileMenu">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>

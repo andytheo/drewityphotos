@@ -43,7 +43,7 @@ const Contact = () => {
         throw new Error(body?.error || 'Failed to send message');
       }
 
-      setSuccess('✓ Message sent — thank you! We&apos;ll be in touch soon.');
+      setSuccess("✓ Message sent - thank you! We'll be in touch soon.");
       setForm(initialState);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to send message';
@@ -57,36 +57,19 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <div className="contact-container">
         <div className="contact-inner">
-          <h2>Get In Touch</h2>
-          <p>We&apos;d love to hear about your photography needs. Send us a message and we&apos;ll respond as soon as possible.</p>
-          <div style={{ marginTop: '1.5rem' }}>
-            <p style={{ fontSize: '1rem', marginBottom: '0.75rem', fontWeight: '500' }}>Find me on Instagram</p>
+          <p className="section-kicker">Contact</p>
+          <h2>Book a session that looks intentional from the start.</h2>
+          <p>
+            Share what you need, the kind of imagery you want, and any dates you&apos;re working
+            around. I&apos;ll follow up with availability and the best fit.
+          </p>
+          <div className="contact-socials">
+            <p className="contact-social-label">Instagram</p>
             <a 
               href="https://instagram.com/drewity_photos" 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ 
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                padding: '0.75rem 1.5rem',
-                background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
-                color: 'white',
-                borderRadius: '12px',
-                textDecoration: 'none',
-                fontSize: '1.1rem',
-                fontWeight: '600',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-                boxShadow: '0 4px 15px rgba(188, 24, 136, 0.3)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(188, 24, 136, 0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(188, 24, 136, 0.3)';
-              }}
+              className="contact-social-link"
               aria-label="Follow us on Instagram"
             >
               <svg 
@@ -101,10 +84,24 @@ const Contact = () => {
               @drewity_photos
             </a>
           </div>
+          <div className="contact-info">
+            <p className="contact-social-label">Studio Address</p>
+            <p className="contact-address">Kitchener</p>
+            <div className="contact-links">
+              <a
+                href="https://maps.app.goo.gl/HR43tY4Sft3VBnPf8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link-chip"
+              >
+                Open in Maps
+              </a>
+            </div>
+          </div>
         </div>
         <div className="contact-card">
           <form className="contact-form" onSubmit={handleSubmit}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            <div className="contact-form-row">
               <div className="form-group">
                 <label htmlFor="name">Your Name</label>
                 <input
@@ -154,26 +151,12 @@ const Contact = () => {
             </div>
 
             {error && (
-              <div style={{
-                padding: '1rem',
-                background: 'rgba(239, 68, 68, 0.1)',
-                color: '#ef4444',
-                borderRadius: '8px',
-                textAlign: 'center',
-                fontWeight: '500'
-              }}>
+              <div className="contact-message contact-message-error">
                 {error}
               </div>
             )}
             {success && (
-              <div style={{
-                padding: '1rem',
-                background: 'rgba(34, 197, 94, 0.1)',
-                color: '#22c55e',
-                borderRadius: '8px',
-                textAlign: 'center',
-                fontWeight: '500'
-              }}>
+              <div className="contact-message contact-message-success">
                 {success}
               </div>
             )}
@@ -182,10 +165,6 @@ const Contact = () => {
               type="submit"
               disabled={loading}
               className="contact-submit"
-              style={{
-                opacity: loading ? 0.7 : 1,
-                cursor: loading ? 'not-allowed' : 'pointer'
-              }}
             >
               {loading ? 'Sending...' : 'Send Message'}
             </button>

@@ -1,68 +1,54 @@
-"use client";
-
-
-// src/components/Portfolio.js
-import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
-const photos = [
-  { src: "/images/andrew3.jpg", category: "Portraits", alt: "Portrait 1" },
-  { src: "/images/greg3.jpg", category: "Portraits", alt: "Portrait 2" },
-  { src: "/images/grace.jpg", category: "Events", alt: "Event 1" },
-  { src: "/images/uti.jpg", category: "Events", alt: "Event 2" },
-  // Add more as needed
+const showcasePhotos = [
+  { src: "/images/Portraits/4.jpg", label: "Portraits", alt: "Portrait showcase", position: "center 16%" },
+  { src: "/images/Headshots/2.jpg", label: "Headshots", alt: "Headshot showcase", position: "center 14%" },
+  { src: "/images/Events/4.jpg", label: "Events", alt: "Event showcase", position: "center 18%" },
+  { src: "/images/Portraits/2.jpg", label: "Editorial", alt: "Editorial style portrait", position: "center 14%" },
+  { src: "/images/Events/6.jpg", label: "Celebrations", alt: "Celebration event coverage", position: "center 18%" },
+  { src: "/images/Headshots/3.jpg", label: "Signature light", alt: "Signature lighting portrait", position: "center 16%" },
 ];
 
-const categories = ["All", "Portraits", "Events"];
-
 export default function Portfolio() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [modalPhoto, setModalPhoto] = useState<string | null>(null);
-
-  const filteredPhotos =
-    selectedCategory === "All"
-      ? photos
-      : photos.filter((p) => p.category === selectedCategory);
-
   return (
     <section id="portfolio" className="portfolio-section">
-      <h2 className="portfolio-text">Portfolio</h2>
-
-      {/* Category Filters */}
-      <div className="portfolio-filters">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            className={selectedCategory === cat ? "active" : ""}
-            onClick={() => setSelectedCategory(cat)}
-          >
-            {cat}
-          </button>
-        ))}
+      <div className="portfolio-intro">
+        <p className="section-kicker">Selected work</p>
+        <h2 className="portfolio-text">A cleaner, stronger first impression.</h2>
+        <p>
+          A tighter homepage edit that keeps expressions and faces clear while still
+          feeling polished and intentional.
+        </p>
       </div>
 
-      {/* Photo Grid */}
       <div className="portfolio-grid">
-        {filteredPhotos.map((photo) => (
-          <div key={photo.src} className="portfolio-item">
+        {showcasePhotos.map((photo) => (
+          <figure
+            key={photo.src}
+            className="portfolio-item"
+          >
             <Image
               src={photo.src}
               alt={photo.alt}
-              width={250}
-              height={333}
-              onClick={() => setModalPhoto(photo.src)}
-              style={{ cursor: 'pointer', objectFit: 'cover' }}
+              fill
+              quality={95}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              style={{ objectPosition: photo.position }}
             />
-          </div>
+            <figcaption>{photo.label}</figcaption>
+          </figure>
         ))}
       </div>
 
-      {/* Modal */}
-      {modalPhoto && (
-        <div className="modal" onClick={() => setModalPhoto(null)}>
-          <Image src={modalPhoto} alt="Enlarged view" width={800} height={1066} style={{ objectFit: 'contain' }} />
-        </div>
-      )}
+      <div className="portfolio-actions">
+        <Link href="/work" className="hero-primary">
+          Explore full gallery
+        </Link>
+        <Link href="/pricing" className="hero-secondary">
+          See pricing
+        </Link>
+      </div>
     </section>
   );
 }

@@ -53,8 +53,11 @@ export default function GenrePage() {
       <Link href="/work" className={styles.backLink}>← Back to gallery</Link>
       
       <header className={styles.header}>
+        <p className={styles.kicker}>Gallery</p>
         <h1>{genre.name}</h1>
-        <p className={styles.lead}>{genre.description}</p>
+        <p className={styles.lead}>
+          {genre.description}. {uniquePhotos.length} curated image{uniquePhotos.length === 1 ? "" : "s"} in this edit.
+        </p>
       </header>
 
       <div className={styles.grid}>
@@ -72,10 +75,11 @@ export default function GenrePage() {
               alt={photo.genre}
               width={400}
               height={300}
-              sizes="(max-width: 600px) 48vw, (max-width: 900px) 33vw, 250px"
+              quality={95}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
               style={{
                 objectFit: "cover",
-                objectPosition: "center 15%",
+                objectPosition: "center 14%",
               }}
             />
           </figure>

@@ -1,10 +1,8 @@
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
+  inset: 0;
+  background: rgba(30, 21, 15, 0.88);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,8 +12,12 @@
 
 .modal {
   position: relative;
-  max-width: 90vw;
+  width: min(92vw, 1100px);
   max-height: 90vh;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 250, 244, 0.96);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 }
 
 .image {
@@ -29,25 +31,25 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(255, 248, 242, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 248, 242, 0.08);
+  color: #fff8f2;
+  font-size: 1.2rem;
   cursor: pointer;
-  padding: 0.5rem;
   line-height: 1;
   z-index: 1001;
 }
 
 .closeBtn:hover {
-  opacity: 0.7;
+  background: rgba(255, 248, 242, 0.16);
 }
 
 @media (max-width: 600px) {
   .closeBtn {
-    top: 0.5rem;
-    right: 0.5rem;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    top: 0.75rem;
+    right: 0.75rem;
   }
 }

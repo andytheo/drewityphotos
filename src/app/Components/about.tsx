@@ -5,36 +5,35 @@ export default function AboutMe() {
   return (
     <section id="about" className="about-section">
       <div className="about-container">
-        {/* Photos */}
-        <div className="about-photos">
-          <Image
-            src="/images/andrew2.jpg"
-            alt="Behind the camera"
-            width={250}
-            height={333}
-            sizes="(max-width: 640px) 72vw, (max-width: 900px) 42vw, 250px"
-          />
-          <Image
-            src="/images/andrew1.jpg"
-            alt="Capturing a moment"
-            width={250}
-            height={333}
-            sizes="(max-width: 640px) 72vw, (max-width: 900px) 42vw, 250px"
-          />
-        </div>
-
-        {/* Text */}
         <div className="about-text">
-          <h2>About Me</h2>
+          <p className="section-kicker">About</p>
+          <h2>Direction that feels effortless. Photos that are authentic and timeless.</h2>
           <p>
-            Hey, I’m Andrew. I’m passionate about capturing authentic moments
-            through my lens – from portraits to events, and everything in
-            between. Photography, for me, is more than a job – it’s storytelling.
+            I photograph people with a calm, guided approach so you never have to
+            guess what to do with your hands, your expression, or your body. The goal
+            is simple: images that feel elevated without feeling overworked.
           </p>
           <p>
-            My goal is to make every session comfortable and fun, while creating
-            images you’ll treasure for years to come.
+            Whether it&apos;s a portrait session, a personal brand refresh, or coverage for
+            an event, I focus on clean composition, flattering light, and true colour so
+            the final gallery feels timeless instead of trendy.
           </p>
+        </div>
+        <div className="about-photo-card">
+          <Image
+            src="/images/Headshots/2.jpg"
+            alt="Professional portrait preview"
+            width={520}
+            height={640}
+            quality={95}
+            sizes="(max-width: 900px) 86vw, 40vw"
+            style={{ objectPosition: "center 12%" }}
+          />
+          <div className="about-photo-note">
+            <span>Relaxed posing</span>
+            <span>Natural retouching</span>
+            <span>Clean, warm tones</span>
+          </div>
         </div>
       </div>
     </section>

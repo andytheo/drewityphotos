@@ -36,11 +36,14 @@ export default function WorkPage() {
   return (
     <main className={styles.container}>
       <header className={styles.header}>
-        <h1>Gallery</h1>
-        <p className={styles.lead}>Explore genres and sample works.</p>
+        <p className={styles.kicker}>Portfolio</p>
+        <h1>Selected work with a refined presentation.</h1>
+        <p className={styles.lead}>
+          Browse portrait, headshot, and event work with premium delivery.
+        </p>
       </header>
 
-      <div className={styles.genreLinks}>        
+      <div className={styles.genreLinks}>
         {GENRES.map((genre) => (
           <Link key={genre.slug} href={`/work/${genre.slug}`} className={styles.genreLink}>
             {genre.name}
@@ -63,10 +66,11 @@ export default function WorkPage() {
               alt={photo.genre}
               width={400}
               height={300}
-              sizes="(max-width: 600px) 48vw, (max-width: 900px) 33vw, 250px"
+              quality={95}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
               style={{
                 objectFit: "cover",
-                objectPosition: "center 15%",
+                objectPosition: "center 14%",
               }}
             />
           </figure>
