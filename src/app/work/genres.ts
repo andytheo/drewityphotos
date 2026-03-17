@@ -38,7 +38,7 @@ export const PHOTOS: Photo[] = [
   { id: 'portraits-8', genre: 'portraits', src: '/images/Portraits/DSC_2464.jpg', thumb: '/images/Portraits/DSC_2464.jpg' },
   
   // Events
-  { id: 'events-1', genre: 'events', src: '/images/Events/1.jpg', thumb: '/images/Events/1.jpg' },
+  { id: 'events-1', genre: 'events', src: '/images/Events/1.jpg', thumb: '/images/Events/1.JPG' },
   { id: 'events-2', genre: 'events', src: '/images/Events/2.jpg', thumb: '/images/Events/2.jpg' },
   { id: 'events-3', genre: 'events', src: '/images/Events/3.jpg', thumb: '/images/Events/3.jpg' },
   { id: 'events-4', genre: 'events', src: '/images/Events/4.jpg', thumb: '/images/Events/4.jpg' },
