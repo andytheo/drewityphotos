@@ -749,9 +749,13 @@ h3,
     grid-template-columns: 1fr;
   }
 
+  .hero-visual {
+    order: -1;
+  }
+
   .hero-section {
     width: min(100%, calc(100% - 2rem));
-    padding-top: 7.5rem;
+    padding-top: 5.5rem;
   }
 
   .portfolio-section {
@@ -817,7 +821,7 @@ h3,
 @media (max-width: 480px) {
   .hero-section {
     width: calc(100% - 1.25rem);
-    padding-top: 7rem;
+    padding-top: 5.25rem;
   }
 
   .hero-section h1,

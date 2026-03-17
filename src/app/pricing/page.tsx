@@ -91,7 +91,7 @@ const packageGroups: PackageGroup[] = [
     title: "Event Photography",
     subtitle: "Ideal for birthdays and ceremonies (weddings not included).",
     image:
-      { src: "/images/Events/7.JPG", alt: "Wedding dancing moment", position: "center 30%" },
+      { src: "/images/Events/8.jpg", alt: "Wedding dancing moment", position: "center 30%" },
     packages: [
       {
         name: "Hourly Coverage",
