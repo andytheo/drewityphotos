@@ -1,15 +1,18 @@
 const testimonials = [
   {
-    name: "Sarah M.",
-    text: "The session felt easy from start to finish, and the final images looked warm, polished, and genuinely flattering.",
+    name: "Ranti S.",
+    rating: 5,
+    text: "Thank you for making my day, you were such a joy to work with!",
   },
   {
-    name: "James K.",
-    text: "Andrew gave enough direction to make us look confident without making anything feel stiff or over-posed.",
+    name: "Ola",
+    rating: 5,
+    text: "He did a great job with taking the pictures for my mum's birthday. Arrived early, took great pictures & videos and we received them fairly quickly.",
   },
   {
-    name: "Lydia T.",
-    text: "The colour, the composition, the little candid moments, it all felt much more premium than a typical photo shoot.",
+    name: "Leonard S.",
+    rating: 5,
+    text: "We had a great experience with Drewity Photography. Very professional, easy to work with, and our wedding photos came out beautiful. Highly recommend!!",
   },
 ];
 
@@ -24,6 +27,9 @@ export default function Testimonials() {
         {testimonials.map((testimonial) => (
           <article key={testimonial.name} className="testimonial-card">
             <p className="testimonial-text">“{testimonial.text}”</p>
+            <p className="testimonial-rating" aria-label={`${testimonial.rating} out of 5 stars`}>
+              {"★".repeat(testimonial.rating)}
+            </p>
             <h4 className="testimonial-name">{testimonial.name}</h4>
           </article>
         ))}

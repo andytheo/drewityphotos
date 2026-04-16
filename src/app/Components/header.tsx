@@ -3,17 +3,17 @@ import Link from "next/link";
 
 const Header = () => {
   return (
+    <section className="hero-wrapper">
     <header className="hero-section">
       <div className="hero-copy">
         <p className="hero-kicker">Drewity Photography</p>
-        <h1>Images that feel polished, relaxed, and real.</h1>
+        <h1>Images that are polished, relaxed and real.</h1>
         <p className="hero-lead">
-          Photography that feels natural, soft, with true-to-life
-          colour instead of stiff poses and generic edits.
+          Photography that feels natural, soft and timeless.
         </p>
         <div className="hero-actions">
           <Link href="/work" className="hero-primary">
-            View the work
+            View my work
           </Link>
           <Link href="/#contact" className="hero-secondary">
             Start your session
@@ -23,7 +23,6 @@ const Header = () => {
           <span>Portraits</span>
           <span>Headshots</span>
           <span>Events</span>
-          <span>Natural colour</span>
         </div>
       </div>
       <div className="hero-visual" aria-hidden="true">
@@ -60,6 +59,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+    </section>
   );
 };
 
