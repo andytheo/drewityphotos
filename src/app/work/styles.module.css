@@ -154,8 +154,99 @@
   transform: scale(1.04);
 }
 
+.portraitSession {
+  margin-top: 5rem;
+}
+
+.portraitSessionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 0 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.portraitSessionHeader h2 {
+  max-width: 38rem;
+  font-size: 2.8rem;
+  line-height: 1.05;
+}
+
+.portraitLead {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.sessionCount {
+  flex: 0 0 auto;
+  padding-bottom: 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.portraitGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.portraitThumbnail {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: #ded9d2;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.portraitThumbnail::after {
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(transparent, rgba(17, 24, 27, 0.58));
+  content: "";
+}
+
+.portraitThumbnail img {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.portraitThumbnail:hover img,
+.portraitThumbnail:focus-visible img {
+  transform: scale(1.035);
+}
+
+.portraitThumbnail:focus-visible {
+  outline: 3px solid var(--accent-alt);
+  outline-offset: 3px;
+}
+
+.portraitCaption {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
 @media (max-width: 900px) {
   .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portraitGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -168,6 +259,24 @@
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .portraitSession {
+    margin-top: 3.5rem;
+  }
+
+  .portraitSessionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .portraitSessionHeader h2 {
+    font-size: 2.2rem;
+  }
+
+  .portraitGrid {
+    gap: 0.65rem;
   }
 
   .genreSection {

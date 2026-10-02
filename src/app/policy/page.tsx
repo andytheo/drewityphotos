@@ -76,6 +76,15 @@ const sections = [
     ],
   },
   {
+    id: "analytics",
+    icon: "📊",
+    title: "Website Analytics",
+    items: [
+      "This website uses Vercel Web Analytics to report aggregate page views, referral sources, device and browser categories, and approximate visitor locations. It is cookieless and does not show the identity of individual visitors.",
+      "Vercel processes this usage information to provide traffic reports to Drewity Photography.",
+    ],
+  },
+  {
     id: "conduct",
     icon: "🤝",
     title: "Session Conduct",

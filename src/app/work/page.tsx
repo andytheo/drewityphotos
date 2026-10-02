@@ -5,10 +5,16 @@ import Image from "next/image";
 import { GENRES, PHOTOS } from "./genres";
 import styles from "./styles.module.css";
 import Lightbox from "./lightbox";
+import { featuredPortraitIndexes, portraitSessionPhotos } from "./portrait-session";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
 
 export default function WorkPage() {
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
-  const [selectedImageSrc, setSelectedImageSrc] = useState<string>("");
+  const [activeGallery, setActiveGallery] = useState<GalleryImage[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const preloaded = React.useRef(new Set<string>());
 
   const uniquePhotos = React.useMemo(() => {
@@ -21,9 +27,14 @@ export default function WorkPage() {
     });
   }, []);
 
-  const handlePhotoClick = (photoSrc: string) => {
-    setSelectedImageSrc(photoSrc);
-    setSelectedPhoto(photoSrc);
+  const workGalleryPhotos = uniquePhotos.slice(0, 12).map((photo) => ({
+    src: photo.src,
+    alt: `${photo.genre} photography by Drewity Photography`,
+  }));
+
+  const handlePhotoClick = (photos: GalleryImage[], index: number) => {
+    setActiveGallery(photos);
+    setSelectedIndex(index);
   };
 
   const preloadPhoto = React.useCallback((photoSrc: string) => {
@@ -52,11 +63,11 @@ export default function WorkPage() {
       </div>
 
       <div className={styles.grid}>
-        {uniquePhotos.slice(0, 12).map((photo) => (
+        {uniquePhotos.slice(0, 12).map((photo, index) => (
           <figure
             key={photo.id}
             className={styles.thumbnail}
-            onClick={() => handlePhotoClick(photo.src)}
+            onClick={() => handlePhotoClick(workGalleryPhotos, index)}
             onMouseEnter={() => preloadPhoto(photo.src)}
             onFocus={() => preloadPhoto(photo.src)}
             onTouchStart={() => preloadPhoto(photo.src)}
@@ -77,11 +88,48 @@ export default function WorkPage() {
         ))}
       </div>
 
+      <section className={styles.portraitSession} aria-labelledby="portrait-session-title">
+        <div className={styles.portraitSessionHeader}>
+          <div>
+            <p className={styles.kicker}>Portraits</p>
+            <h2 id="portrait-session-title">A portrait in every frame.</h2>
+            <p className={styles.portraitLead}>
+              A studio session told through color, movement, and small moments.
+            </p>
+          </div>
+          <p className={styles.sessionCount}>01 / Portrait session</p>
+        </div>
+
+        <div className={styles.portraitGrid}>
+          {featuredPortraitIndexes.map((photoIndex) => {
+            const photo = portraitSessionPhotos[photoIndex];
+            return (
+              <button
+                key={photo.src}
+                type="button"
+                className={styles.portraitThumbnail}
+                onClick={() => handlePhotoClick(portraitSessionPhotos, photoIndex)}
+                aria-label={`Open full portrait gallery, starting with: ${photo.alt}`}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 900px) 50vw, 33vw"
+                />
+                <span className={styles.portraitCaption}>View full gallery</span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       <Lightbox
-        isOpen={!!selectedPhoto}
-        imageSrc={selectedImageSrc}
-        imageAlt="Full size image"
-        onClose={() => setSelectedPhoto(null)}
+        isOpen={activeGallery.length > 0}
+        images={activeGallery}
+        currentIndex={selectedIndex}
+        onSelectImage={setSelectedIndex}
+        onClose={() => setActiveGallery([])}
       />
     </main>
   );
