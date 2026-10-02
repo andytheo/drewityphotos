@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { getPhotosByGenre, getGenre } from "../genres";
 import Lightbox from "../lightbox";
 import styles from "../styles.module.css";
-import { portraitSessionPhotos } from "../portrait-session";
+import { portraitSessionPhotoCount, portraitSessionPhotos } from "../portrait-session";
 
 const isPortraitGallery = (slug: string) => slug === "portraits";
 
@@ -61,38 +61,13 @@ export default function GenrePage() {
         <h1>{genre.name}</h1>
         <p className={styles.lead}>
           {hasPortraitSession
-            ? "1 portrait session with 21 photographs."
+            ? `Browse the portrait collection or open Ife's ${portraitSessionPhotoCount}-photo studio session.`
             : `${genre.description}. ${uniquePhotos.length} curated image${uniquePhotos.length === 1 ? "" : "s"} in this edit.`}
         </p>
       </header>
 
       <div className={styles.grid}>
-        {hasPortraitSession ? (
-          <button
-            type="button"
-            className={`${styles.thumbnail} ${styles.sessionCard}`}
-            onClick={() => {
-              setSelectedImageSrc(portraitSessionPhotos[0].src);
-              setSelectedPhoto("portrait-session");
-            }}
-            onMouseEnter={() => preloadPhoto(portraitSessionPhotos[0].src)}
-            onFocus={() => preloadPhoto(portraitSessionPhotos[0].src)}
-            onTouchStart={() => preloadPhoto(portraitSessionPhotos[0].src)}
-            aria-label="Open Ife's portrait session gallery, 21 photographs"
-          >
-            <Image
-              src={portraitSessionPhotos[0].src}
-              alt={portraitSessionPhotos[0].alt}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-            />
-            <span className={styles.sessionCardCaption}>
-              <span>Ife</span>
-              <span>Portrait session · 21 photographs</span>
-            </span>
-          </button>
-        ) : (
-          uniquePhotos.map((photo) => (
+        {uniquePhotos.map((photo) => (
             <figure
               key={photo.id}
               className={styles.thumbnail}
@@ -114,7 +89,31 @@ export default function GenrePage() {
                 }}
               />
             </figure>
-          ))
+          ))}
+        {hasPortraitSession && (
+          <button
+            type="button"
+            className={`${styles.thumbnail} ${styles.sessionCard}`}
+            onClick={() => {
+              setSelectedImageSrc(portraitSessionPhotos[0].src);
+              setSelectedPhoto("portrait-session");
+            }}
+            onMouseEnter={() => preloadPhoto(portraitSessionPhotos[0].src)}
+            onFocus={() => preloadPhoto(portraitSessionPhotos[0].src)}
+            onTouchStart={() => preloadPhoto(portraitSessionPhotos[0].src)}
+            aria-label={`Open Ife's portrait session gallery, ${portraitSessionPhotoCount} photographs`}
+          >
+            <Image
+              src={portraitSessionPhotos[0].src}
+              alt={portraitSessionPhotos[0].alt}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+            />
+            <span className={styles.sessionCardCaption}>
+              <span>Ife</span>
+              <span>Portrait session · {portraitSessionPhotoCount} photographs</span>
+            </span>
+          </button>
         )}
       </div>
 

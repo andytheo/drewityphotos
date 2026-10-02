@@ -5,7 +5,6 @@ import Image from "next/image";
 import { GENRES, PHOTOS } from "./genres";
 import styles from "./styles.module.css";
 import Lightbox from "./lightbox";
-import { featuredPortraitIndexes, portraitSessionPhotos } from "./portrait-session";
 
 interface GalleryImage {
   src: string;
@@ -87,42 +86,6 @@ export default function WorkPage() {
           </figure>
         ))}
       </div>
-
-      <section className={styles.portraitSession} aria-labelledby="portrait-session-title">
-        <div className={styles.portraitSessionHeader}>
-          <div>
-            <p className={styles.kicker}>Portraits</p>
-            <h2 id="portrait-session-title">A portrait in every frame.</h2>
-            <p className={styles.portraitLead}>
-              A studio session told through color, movement, and small moments.
-            </p>
-          </div>
-          <p className={styles.sessionCount}>01 / Portrait session</p>
-        </div>
-
-        <div className={styles.portraitGrid}>
-          {featuredPortraitIndexes.map((photoIndex) => {
-            const photo = portraitSessionPhotos[photoIndex];
-            return (
-              <button
-                key={photo.src}
-                type="button"
-                className={styles.portraitThumbnail}
-                onClick={() => handlePhotoClick(portraitSessionPhotos, photoIndex)}
-                aria-label={`Open full portrait gallery, starting with: ${photo.alt}`}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 900px) 50vw, 33vw"
-                />
-                <span className={styles.portraitCaption}>View full gallery</span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
 
       <Lightbox
         isOpen={activeGallery.length > 0}

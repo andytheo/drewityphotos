@@ -27,4 +27,4 @@ export const portraitSessionPhotos: PortraitPhoto[] = [
   { src: "/images/Portraits/Ife/DSC_9271.webp", alt: "Dramatic portrait with a colorful skirt" },
 ];
 
-export const featuredPortraitIndexes = [0, 2, 4, 6, 10, 14];
+export const portraitSessionPhotoCount = portraitSessionPhotos.length;
