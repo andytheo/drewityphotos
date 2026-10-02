@@ -9,7 +9,7 @@ const Header = () => {
         <p className="hero-kicker">Drewity Photography</p>
         <h1>Images that are polished, relaxed and real.</h1>
         <p className="hero-lead">
-          Photography that feels natural, soft and timeless.
+          Portrait, headshot, and event photography in Kitchener, Waterloo, Cambridge, and across Waterloo Region.
         </p>
         <div className="hero-actions">
           <Link href="/work" className="hero-primary">
