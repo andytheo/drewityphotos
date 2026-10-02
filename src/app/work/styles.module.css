@@ -154,6 +154,38 @@
   transform: scale(1.04);
 }
 
+.sessionCard {
+  justify-self: start;
+  width: min(100%, 27rem);
+  aspect-ratio: 4 / 5;
+  border: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.sessionCardCaption {
+  position: absolute;
+  z-index: 1;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: grid;
+  gap: 0.3rem;
+  color: white;
+}
+
+.sessionCardCaption span:first-child {
+  font-family: var(--font-display), serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.sessionCardCaption span:last-child {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .portraitSession {
   margin-top: 5rem;
 }
@@ -285,5 +317,9 @@
 
   .thumbnail {
     aspect-ratio: 4 / 5;
+  }
+
+  .sessionCard {
+    width: 100%;
   }
 }

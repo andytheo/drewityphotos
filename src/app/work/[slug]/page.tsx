@@ -6,6 +6,9 @@ import { useParams } from "next/navigation";
 import { getPhotosByGenre, getGenre } from "../genres";
 import Lightbox from "../lightbox";
 import styles from "../styles.module.css";
+import { portraitSessionPhotos } from "../portrait-session";
+
+const isPortraitGallery = (slug: string) => slug === "portraits";
 
 export default function GenrePage() {
   const params = useParams();
@@ -13,6 +16,7 @@ export default function GenrePage() {
   
   const genre = getGenre(slug);
   const photos = getPhotosByGenre(slug);
+  const hasPortraitSession = isPortraitGallery(slug);
   const uniquePhotos = React.useMemo(() => {
     const seen = new Set<string>();
     return photos.filter((photo) => {
@@ -56,40 +60,76 @@ export default function GenrePage() {
         <p className={styles.kicker}>Gallery</p>
         <h1>{genre.name}</h1>
         <p className={styles.lead}>
-          {genre.description}. {uniquePhotos.length} curated image{uniquePhotos.length === 1 ? "" : "s"} in this edit.
+          {hasPortraitSession
+            ? "1 portrait session with 21 photographs."
+            : `${genre.description}. ${uniquePhotos.length} curated image${uniquePhotos.length === 1 ? "" : "s"} in this edit.`}
         </p>
       </header>
 
       <div className={styles.grid}>
-        {uniquePhotos.map((photo) => (
-          <figure
-            key={photo.id}
-            className={styles.thumbnail}
-            onClick={() => handlePhotoClick(photo.src)}
-            onMouseEnter={() => preloadPhoto(photo.src)}
-            onFocus={() => preloadPhoto(photo.src)}
-            onTouchStart={() => preloadPhoto(photo.src)}
+        {hasPortraitSession ? (
+          <button
+            type="button"
+            className={`${styles.thumbnail} ${styles.sessionCard}`}
+            onClick={() => {
+              setSelectedImageSrc(portraitSessionPhotos[0].src);
+              setSelectedPhoto("portrait-session");
+            }}
+            onMouseEnter={() => preloadPhoto(portraitSessionPhotos[0].src)}
+            onFocus={() => preloadPhoto(portraitSessionPhotos[0].src)}
+            onTouchStart={() => preloadPhoto(portraitSessionPhotos[0].src)}
+            aria-label="Open Ife's portrait session gallery, 21 photographs"
           >
             <Image
-              src={photo.thumb}
-              alt={photo.genre}
-              width={400}
-              height={300}
-              quality={95}
+              src={portraitSessionPhotos[0].src}
+              alt={portraitSessionPhotos[0].alt}
+              fill
               sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-              style={{
-                objectFit: "cover",
-                objectPosition: "center 14%",
-              }}
             />
-          </figure>
-        ))}
+            <span className={styles.sessionCardCaption}>
+              <span>Ife</span>
+              <span>Portrait session · 21 photographs</span>
+            </span>
+          </button>
+        ) : (
+          uniquePhotos.map((photo) => (
+            <figure
+              key={photo.id}
+              className={styles.thumbnail}
+              onClick={() => handlePhotoClick(photo.src)}
+              onMouseEnter={() => preloadPhoto(photo.src)}
+              onFocus={() => preloadPhoto(photo.src)}
+              onTouchStart={() => preloadPhoto(photo.src)}
+            >
+              <Image
+                src={photo.thumb}
+                alt={photo.genre}
+                width={400}
+                height={300}
+                quality={95}
+                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center 14%",
+                }}
+              />
+            </figure>
+          ))
+        )}
       </div>
 
       <Lightbox
         isOpen={!!selectedPhoto}
-        imageSrc={selectedImageSrc}
-        imageAlt="Full size image"
+        {...(hasPortraitSession
+          ? {
+              images: portraitSessionPhotos,
+              currentIndex: Math.max(0, portraitSessionPhotos.findIndex((photo) => photo.src === selectedImageSrc)),
+              onSelectImage: (index: number) => setSelectedImageSrc(portraitSessionPhotos[index].src),
+            }
+          : {
+              imageSrc: selectedImageSrc,
+              imageAlt: "Full size image",
+            })}
         onClose={() => setSelectedPhoto(null)}
       />
     </main>
